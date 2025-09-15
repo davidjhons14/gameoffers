@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Download Games & Earn Rewards</title>
+  <style>
+    :root{
+      --blue:#1e88e5;
+      --green:#43a047;
+      --muted:#666;
+      --bg:#f5f7fa;
+      --card-shadow:0 4px 16px rgba(0,0,0,0.08);
+      --radius:12px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:Segoe UI,Arial,sans-serif;
+      background:var(--bg);
+      color:#222;
+      line-height:1.45;
+    }
+    header{
+      background:var(--blue);
+      color:#fff;
+      text-align:center;
+      padding:1.5rem 1rem;
+    }
+    header h1{margin:0;font-size:1.9rem}
+    header p{margin:6px 0 0;opacity:.95}
+    .hero{
+      position:relative;
+      background:url('games-banner.jpg') no-repeat center/cover;
+      padding:3.5rem 1.25rem;
+      color:#fff;
+      text-align:center;
+      overflow:hidden;
+    }
+    .hero::before{
+      content:'';
+      position:absolute;inset:0;
+      background:rgba(0,0,0,.45);
+      z-index:1;
+    }
+    .hero-inner{position:relative;z-index:2;max-width:900px;margin:0 auto;}
+    .hero h1{font-size:2.4rem;margin:0 0 .6rem;line-height:1.1}
+    .hero p{font-size:1.05rem;margin:0 auto 1rem;color:rgba(255,255,255,.95);max-width:720px}
+    .scroll-down{
+      position:absolute;left:50%;transform:translateX(-50%);
+      bottom:14px;z-index:3;cursor:pointer;
+      width:44px;height:44px;display:flex;align-items:center;justify-content:center;
+      background:rgba(255,255,255,.15);border-radius:999px;
+    }
+    .chev{width:18px;height:18px;fill:#fff;animation:bounce 1.8s infinite}
+    @keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+    .offers{
+      display:flex;flex-wrap:wrap;justify-content:center;gap:1.25rem;
+      padding:2.4rem 1rem;max-width:1200px;margin:0 auto;
+    }
+    .offer-card{
+      background:#fff;width:300px;border-radius:var(--radius);
+      box-shadow:var(--card-shadow);padding:1.25rem;text-align:center;
+      transition:.18s ease;
+    }
+    .offer-card:hover{transform:translateY(-6px);box-shadow:0 10px 28px rgba(0,0,0,.08)}
+    .offer-card img{width:100%;height:170px;object-fit:cover;border-radius:8px;display:block}
+    .offer-card h3{margin:.9rem 0 .4rem;font-size:1.12rem}
+    .offer-card p{margin:0;color:#555;font-size:.94rem}
+    .get-started{
+      margin-top:.95rem;display:inline-block;padding:.6rem 1rem;border-radius:8px;
+      background:var(--blue);color:#fff;font-weight:600;border:0;cursor:pointer;
+    }
+    .get-started:hover{background:#1565c0}
+    .video-section{
+      background:#fff;padding:1.75rem 1rem;text-align:center;margin:0 0 1.25rem;
+      box-shadow:0 2px 10px rgba(0,0,0,.03);
+    }
+    .video-section h2{color:var(--blue);font-size:1.6rem;margin:0 0 6px}
+    .video-section p{color:#555;margin:0 0 12px;font-size:1rem}
+    .video-wrapper{max-width:880px;margin:0 auto;}
+    .video-wrapper iframe{width:100%;height:360px;border-radius:10px;border:none;box-shadow:0 6px 20px rgba(0,0,0,.08);}
+    .authenticity{padding:1.5rem 1rem;text-align:center}
+    .authenticity h2{color:var(--blue);margin:0 0 .6rem;font-size:1.3rem}
+    .authenticity p{max-width:780px;margin:6px auto;color:#555}
+    .modal{
+      position:fixed;inset:0;display:none;align-items:center;justify-content:center;
+      background:rgba(0,0,0,.55);z-index:1200;padding:20px;
+    }
+    .modal.show{display:flex}
+    .modal-content{
+      width:100%;max-width:480px;background:#fff;border-radius:14px;padding:22px;
+      box-shadow:0 12px 40px rgba(0,0,0,.18);position:relative;
+    }
+    .modal-close{
+      position:absolute;top:10px;right:10px;background:transparent;border:0;
+      font-size:20px;cursor:pointer;color:#666;padding:8px;border-radius:8px;
+    }
+    .modal-content h2{text-align:center;color:var(--blue);margin:0 0 14px}
+    .modal-form{display:flex;gap:12px;align-items:center}
+    .modal-form input[type=email]{
+      flex:1;padding:12px 14px;font-size:1rem;border-radius:10px;border:1px solid #ccc;
+      margin-right:12px;
+    }
+    .submit-btn{padding:11px 14px;border-radius:10px;border:0;background:var(--green);color:#fff;font-weight:700;cursor:pointer}
+    .modal-actions{margin-top:12px;display:flex;justify-content:center;gap:10px}
+    .close-btn{padding:9px 14px;border-radius:10px;border:0;background:#e0e0e0;cursor:pointer}
+    .modal-status{text-align:center;color:var(--muted);font-size:.9rem;min-height:18px;margin-top:10px}
+    body.modal-open{overflow:hidden}
+    @media(max-width:900px){.hero h1{font-size:2rem}.video-wrapper iframe{height:300px}}
+    @media(max-width:640px){
+      .hero{padding:2.75rem 1rem}.hero h1{font-size:1.55rem}
+      .offer-card{width:92%;max-width:420px}
+      .video-wrapper iframe{height:240px}
+      .modal-form{flex-direction:column;gap:8px}
+      .modal-form input{margin-right:0}.modal-form .submit-btn{width:100%}
+    }
+    @media(max-width:420px){.video-wrapper iframe{height:200px}.hero p{font-size:.92rem}}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🎮 Download Games & Earn Rewards</h1>
+    <p>Play games, complete levels, and get rewarded!</p>
+  </header>
+
+  <section class="hero">
+    <div class="hero-inner">
+      <h1>Play. Download. Earn.</h1>
+      <p>Download popular games, complete simple tasks, and unlock rewards like gift cards and bonus credits.  
+      Click <strong>Download & Earn</strong> to start — we’ll confirm your email and send your rewards directly to you.</p>
+    </div>
+    <button class="scroll-down" aria-label="Scroll to offers">
+      <svg class="chev" viewBox="0 0 24 24"><path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg>
+    </button>
+  </section>
+
+  <section class="offers" id="offers">
+    <div class="offer-card">
+      <img src="pubg.jpg" alt="PUBG Mobile"/>
+      <h3>PUBG Mobile</h3>
+      <p>Download PUBG Mobile and complete 3 matches to claim your reward.</p>
+      <button class="get-started" data-href="https://example.com/pubg">Download & Earn</button>
+    </div>
+    <div class="offer-card">
+      <img src="candycrush.jpg" alt="Candy Crush"/>
+      <h3>Candy Crush Saga</h3>
+      <p>Reach level 10 and unlock sweet rewards instantly.</p>
+      <button class="get-started" data-href="https://example.com/candycrush">Download & Earn</button>
+    </div>
+    <div class="offer-card">
+      <img src="clash.jpg" alt="Clash of Clans"/>
+      <h3>Clash of Clans</h3>
+      <p>Build your village to level 5 and receive bonus gift cards.</p>
+      <button class="get-started" data-href="https://example.com/clash">Download & Earn</button>
+    </div>
+    <div class="offer-card">
+      <img src="fortnite.jpg" alt="Fortnite"/>
+      <h3>Fortnite</h3>
+      <p>Install and play 2 matches to earn exclusive rewards.</p>
+      <button class="get-started" data-href="https://example.com/fortnite">Download & Earn</button>
+    </div>
+  </section>
+
+  <section class="video-section">
+    <
