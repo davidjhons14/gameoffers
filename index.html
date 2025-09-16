@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Earn Rewards by Downloading Apps!</title>
-  
+
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
   <style>
     body {
@@ -17,7 +17,7 @@
     header {
       background: linear-gradient(135deg, #4caf50, #81c784);
       color: white;
-      padding: 4px 20px;
+      padding: 40px 20px;
       text-align: center;
       position: relative;
     }
@@ -51,10 +51,6 @@
     }
 
     .cta-box {
-/*       background: white;
-      border-radius: 10px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-      padding: 30px; */
       text-align: center;
       margin-bottom: 40px;
     }
@@ -79,12 +75,14 @@
     }
 
     .reward-card {
+      display: flex;
+      align-items: center;
       background: #ffffff;
       border-radius: 10px;
       padding: 20px;
-      width: 220px;
+      width: 100%;
+      max-width: 450px;
       box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      text-align: center;
       transition: transform 0.3s ease;
     }
 
@@ -93,26 +91,48 @@
     }
 
     .reward-card .icon {
-      font-size: 2em;
-      margin-bottom: 10px;
-    }
-    .icon img{
-      height: 100%;
-      width: 100%;
+      flex-shrink: 0;
+      width: 70px;
+      height: 70px;
+      margin-right: 20px;
+      border-radius: 10px;
+      overflow: hidden;
     }
 
-    .reward-card button {
+    .reward-card .icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .reward-content {
+      text-align: left;
+      flex-grow: 1;
+    }
+
+    .reward-content h3 {
+      margin: 0;
+      font-size: 1.2em;
+      color: #2e7d32;
+    }
+
+    .reward-content p {
+      margin: 5px 0 10px;
+      font-size: 0.95em;
+    }
+
+    .reward-content button {
       background: #4caf50;
       color: white;
       border: none;
-      padding: 10px 20px;
-      margin-top: 10px;
+      padding: 8px 16px;
       border-radius: 5px;
       cursor: pointer;
+      font-size: 0.9em;
       transition: background 0.3s ease;
     }
 
-    .reward-card button:hover {
+    .reward-content button:hover {
       background: #388e3c;
     }
 
@@ -125,33 +145,29 @@
     }
 
     @media (max-width: 600px) {
-      header h1 {
-        font-size: 2em;
+      .reward-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
       }
 
-      .reward-card {
-        width: 100%;
+      .reward-card .icon {
+        margin-right: 0;
+        margin-bottom: 10px;
+      }
+
+      .reward-content {
+        text-align: center;
       }
     }
   </style>
-
-  <!-- Google Analytics (Optional) -->
-  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-XXXXXXXXXX');
-  </script> -->
 </head>
 <body>
 
   <header>
     <h1>🎉 Download & Earn Rewards!</h1>
     <p>Get exciting gift vouchers and bonus rewards – Just by downloading fun and popular mobile apps!</p>
-    <div class="scroll-down">
-      ⬇
-    </div>
+    <div class="scroll-down">⬇</div>
   </header>
 
   <div class="container">
@@ -165,34 +181,42 @@
 
         <!-- Card 1 -->
         <div class="reward-card">
-          <div class="icon"><img src="cashapp.png"></div>
-          <h3>CashApp</h3>
-          <p>Earn instant balance in your CashApp wallet.</p>
-          <button onclick="window.location.href='https://appverification.net/cl/i/j6rmrj';">Get Started</button>
+          <div class="icon"><img src="cashapp.png" alt="CashApp"></div>
+          <div class="reward-content">
+            <h3>CashApp</h3>
+            <p>Earn instant balance in your CashApp wallet.</p>
+            <button onclick="window.location.href='https://appverification.net/cl/i/j6rmrj';">Get Started</button>
+          </div>
         </div>
 
         <!-- Card 2 -->
         <div class="reward-card">
-          <div class="icon"><img src="paypal.png"></div>
-          <h3>PayPal</h3>
-          <p>Withdraw your reward as real PayPal cash.</p>
-          <button onclick="window.location.href='https://appverification.net/cl/i/j6rmrj';">Get Started</button>
+          <div class="icon"><img src="paypal.png" alt="PayPal"></div>
+          <div class="reward-content">
+            <h3>PayPal</h3>
+            <p>Withdraw your reward as real PayPal cash.</p>
+            <button onclick="window.location.href='https://appverification.net/cl/i/j6rmrj';">Get Started</button>
+          </div>
         </div>
 
         <!-- Card 3 -->
         <div class="reward-card">
-          <div class="icon"><img src="vimeo.png"></div>
-          <h3>Vimeo Credits</h3>
-          <p>Use credits for premium content or services.</p>
-          <button onclick="window.location.href='https://appverification.net/cl/i/j6rmrj';">Get Started</button>
+          <div class="icon"><img src="vimeo.png" alt="Vimeo"></div>
+          <div class="reward-content">
+            <h3>Vimeo Credits</h3>
+            <p>Use credits for premium content or services.</p>
+            <button onclick="window.location.href='https://appverification.net/cl/i/j6rmrj';">Get Started</button>
+          </div>
         </div>
 
         <!-- Card 4 -->
         <div class="reward-card">
-          <div class="icon"><img src="amazon.webp"></div>
-          <h3>Amazon Vouchers</h3>
-          <p>Shop online using your free Amazon gift card.</p>
-          <button onclick="window.location.href='https://appverification.net/cl/i/j6rmrj';">Get Started</button>
+          <div class="icon"><img src="amazon.webp" alt="Amazon"></div>
+          <div class="reward-content">
+            <h3>Amazon Vouchers</h3>
+            <p>Shop online using your free Amazon gift card.</p>
+            <button onclick="window.location.href='https://appverification.net/cl/i/j6rmrj';">Get Started</button>
+          </div>
         </div>
 
       </div>
@@ -207,9 +231,9 @@
     </div>
 
     <!-- Footer -->
-<!--     <div class="footer">
+    <div class="footer">
       This is a promotional page. All offers are 100% genuine and tested by real users. Rewards may vary. T&C Apply.
-    </div> -->
+    </div>
 
   </div>
 
