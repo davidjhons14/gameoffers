@@ -1,166 +1,145 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Download Games & Earn Rewards</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Earn Rewards by Downloading Apps!</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
   <style>
-    :root{
-      --blue:#1e88e5;
-      --green:#43a047;
-      --muted:#666;
-      --bg:#f5f7fa;
-      --card-shadow:0 4px 16px rgba(0,0,0,0.08);
-      --radius:12px;
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: #f9f9f9;
+      color: #333;
     }
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family:Segoe UI,Arial,sans-serif;
-      background:var(--bg);
-      color:#222;
-      line-height:1.45;
+
+    header {
+      background: linear-gradient(135deg, #4caf50, #81c784);
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
     }
-    header{
-      background:var(--blue);
-      color:#fff;
-      text-align:center;
-      padding:1.5rem 1rem;
+
+    header h1 {
+      font-size: 2.5em;
+      margin-bottom: 10px;
     }
-    header h1{margin:0;font-size:1.9rem}
-    header p{margin:6px 0 0;opacity:.95}
-    .hero{
-      position:relative;
-      background:url('games-banner.jpg') no-repeat center/cover;
-      padding:3.5rem 1.25rem;
-      color:#fff;
-      text-align:center;
-      overflow:hidden;
+
+    header p {
+      font-size: 1.2em;
+      max-width: 600px;
+      margin: auto;
     }
-    .hero::before{
-      content:'';
-      position:absolute;inset:0;
-      background:rgba(0,0,0,.45);
-      z-index:1;
+
+    .container {
+      padding: 30px 20px;
+      max-width: 900px;
+      margin: auto;
     }
-    .hero-inner{position:relative;z-index:2;max-width:900px;margin:0 auto;}
-    .hero h1{font-size:2.4rem;margin:0 0 .6rem;line-height:1.1}
-    .hero p{font-size:1.05rem;margin:0 auto 1rem;color:rgba(255,255,255,.95);max-width:720px}
-    .scroll-down{
-      position:absolute;left:50%;transform:translateX(-50%);
-      bottom:14px;z-index:3;cursor:pointer;
-      width:44px;height:44px;display:flex;align-items:center;justify-content:center;
-      background:rgba(255,255,255,.15);border-radius:999px;
+
+    .cta-box {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      padding: 30px;
+      text-align: center;
     }
-    .chev{width:18px;height:18px;fill:#fff;animation:bounce 1.8s infinite}
-    @keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
-    .offers{
-      display:flex;flex-wrap:wrap;justify-content:center;gap:1.25rem;
-      padding:2.4rem 1rem;max-width:1200px;margin:0 auto;
+
+    .cta-box h2 {
+      color: #2e7d32;
+      font-size: 1.8em;
+      margin-bottom: 10px;
     }
-    .offer-card{
-      background:#fff;width:300px;border-radius:var(--radius);
-      box-shadow:var(--card-shadow);padding:1.25rem;text-align:center;
-      transition:.18s ease;
+
+    .cta-box p {
+      font-size: 1em;
+      margin-bottom: 20px;
     }
-    .offer-card:hover{transform:translateY(-6px);box-shadow:0 10px 28px rgba(0,0,0,.08)}
-    .offer-card img{width:100%;height:170px;object-fit:cover;border-radius:8px;display:block}
-    .offer-card h3{margin:.9rem 0 .4rem;font-size:1.12rem}
-    .offer-card p{margin:0;color:#555;font-size:.94rem}
-    .get-started{
-      margin-top:.95rem;display:inline-block;padding:.6rem 1rem;border-radius:8px;
-      background:var(--blue);color:#fff;font-weight:600;border:0;cursor:pointer;
+
+    .cta-button {
+      background: #4caf50;
+      color: white;
+      font-size: 1.1em;
+      padding: 15px 30px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s ease;
     }
-    .get-started:hover{background:#1565c0}
-    .video-section{
-      background:#fff;padding:1.75rem 1rem;text-align:center;margin:0 0 1.25rem;
-      box-shadow:0 2px 10px rgba(0,0,0,.03);
+
+    .cta-button:hover {
+      background: #388e3c;
     }
-    .video-section h2{color:var(--blue);font-size:1.6rem;margin:0 0 6px}
-    .video-section p{color:#555;margin:0 0 12px;font-size:1rem}
-    .video-wrapper{max-width:880px;margin:0 auto;}
-    .video-wrapper iframe{width:100%;height:360px;border-radius:10px;border:none;box-shadow:0 6px 20px rgba(0,0,0,.08);}
-    .authenticity{padding:1.5rem 1rem;text-align:center}
-    .authenticity h2{color:var(--blue);margin:0 0 .6rem;font-size:1.3rem}
-    .authenticity p{max-width:780px;margin:6px auto;color:#555}
-    .modal{
-      position:fixed;inset:0;display:none;align-items:center;justify-content:center;
-      background:rgba(0,0,0,.55);z-index:1200;padding:20px;
+
+    .testimonials {
+      margin-top: 50px;
     }
-    .modal.show{display:flex}
-    .modal-content{
-      width:100%;max-width:480px;background:#fff;border-radius:14px;padding:22px;
-      box-shadow:0 12px 40px rgba(0,0,0,.18);position:relative;
+
+    .testimonial {
+      background: #ffffff;
+      border-left: 4px solid #4caf50;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 5px;
     }
-    .modal-close{
-      position:absolute;top:10px;right:10px;background:transparent;border:0;
-      font-size:20px;cursor:pointer;color:#666;padding:8px;border-radius:8px;
+
+    .testimonial strong {
+      color: #2e7d32;
     }
-    .modal-content h2{text-align:center;color:var(--blue);margin:0 0 14px}
-    .modal-form{display:flex;gap:12px;align-items:center}
-    .modal-form input[type=email]{
-      flex:1;padding:12px 14px;font-size:1rem;border-radius:10px;border:1px solid #ccc;
-      margin-right:12px;
+
+    .footer {
+      background: #e0e0e0;
+      padding: 20px;
+      text-align: center;
+      font-size: 0.9em;
+      color: #666;
     }
-    .submit-btn{padding:11px 14px;border-radius:10px;border:0;background:var(--green);color:#fff;font-weight:700;cursor:pointer}
-    .modal-actions{margin-top:12px;display:flex;justify-content:center;gap:10px}
-    .close-btn{padding:9px 14px;border-radius:10px;border:0;background:#e0e0e0;cursor:pointer}
-    .modal-status{text-align:center;color:var(--muted);font-size:.9rem;min-height:18px;margin-top:10px}
-    body.modal-open{overflow:hidden}
-    @media(max-width:900px){.hero h1{font-size:2rem}.video-wrapper iframe{height:300px}}
-    @media(max-width:640px){
-      .hero{padding:2.75rem 1rem}.hero h1{font-size:1.55rem}
-      .offer-card{width:92%;max-width:420px}
-      .video-wrapper iframe{height:240px}
-      .modal-form{flex-direction:column;gap:8px}
-      .modal-form input{margin-right:0}.modal-form .submit-btn{width:100%}
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2em;
+      }
+
+      .cta-button {
+        width: 100%;
+      }
     }
-    @media(max-width:420px){.video-wrapper iframe{height:200px}.hero p{font-size:.92rem}}
   </style>
 </head>
 <body>
+
   <header>
-    <h1>🎮 Download Games & Earn Rewards</h1>
-    <p>Play games, complete levels, and get rewarded!</p>
+    <h1>🎉 Download & Earn Rewards!</h1>
+    <p>Get exciting gift vouchers and bonus rewards – Just by downloading fun and popular mobile apps!</p>
   </header>
 
-  <section class="hero">
-    <div class="hero-inner">
-      <h1>Play. Download. Earn.</h1>
-      <p>Download popular games, complete simple tasks, and unlock rewards like gift cards and bonus credits.  
-      Click <strong>Download & Earn</strong> to start — we’ll confirm your email and send your rewards directly to you.</p>
+  <div class="container">
+    <div class="cta-box">
+      <h2>💎 100% Genuine Offer – Trusted by Thousands!</h2>
+      <p>It’s simple: Install a few apps → Use them for 2–3 minutes → Get instant reward points & vouchers. No catch, no spam.</p>
+      <button class="cta-button" onclick="window.location.href='https://your-redirect-link.com';">Start Earning Now</button>
     </div>
-    <button class="scroll-down" aria-label="Scroll to offers">
-      <svg class="chev" viewBox="0 0 24 24"><path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg>
-    </button>
-  </section>
 
-  <section class="offers" id="offers">
-    <div class="offer-card">
-      <img src="pubg.jpg" alt="PUBG Mobile"/>
-      <h3>PUBG Mobile</h3>
-      <p>Download PUBG Mobile and complete 3 matches to claim your reward.</p>
-      <button class="get-started" data-href="https://example.com/pubg">Download & Earn</button>
-    </div>
-    <div class="offer-card">
-      <img src="candycrush.jpg" alt="Candy Crush"/>
-      <h3>Candy Crush Saga</h3>
-      <p>Reach level 10 and unlock sweet rewards instantly.</p>
-      <button class="get-started" data-href="https://example.com/candycrush">Download & Earn</button>
-    </div>
-    <div class="offer-card">
-      <img src="clash.jpg" alt="Clash of Clans"/>
-      <h3>Clash of Clans</h3>
-      <p>Build your village to level 5 and receive bonus gift cards.</p>
-      <button class="get-started" data-href="https://example.com/clash">Download & Earn</button>
-    </div>
-    <div class="offer-card">
-      <img src="fortnite.jpg" alt="Fortnite"/>
-      <h3>Fortnite</h3>
-      <p>Install and play 2 matches to earn exclusive rewards.</p>
-      <button class="get-started" data-href="https://example.com/fortnite">Download & Earn</button>
-    </div>
-  </section>
+    <div class="testimonials">
+      <h2>🔒 Why People Trust Us</h2>
 
-  <section class="video-section">
-    <
+      <div class="testimonial">
+        <p><strong>Rahul M.</strong> from Delhi earned a ₹250 Amazon voucher in just 15 minutes! “Thought it was fake, but it actually worked!”</p>
+      </div>
+
+      <div class="testimonial">
+        <p><strong>Anjali P.</strong> from Mumbai says: “I downloaded 3 games and got my Flipkart gift card instantly!”</p>
+      </div>
+
+      <div class="testimonial">
+        <p><strong>Vikram T.</strong> from Bangalore: “This is real. Already earned ₹500 worth of rewards. Highly recommended!”</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    This is a promotional page. All offers are 100% genuine and tested by real users. Rewards may vary. T&C Apply.
+  </div>
+
+</body>
+</html>
